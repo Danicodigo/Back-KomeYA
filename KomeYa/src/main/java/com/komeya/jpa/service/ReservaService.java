@@ -73,5 +73,24 @@ public class ReservaService implements IReservaService{
 		    }	
 	}
 
+	@Override
+	public ResponseEntity<List<Reserva>> getReservasByUsuario(Long id) {
+		try {
+		      List<Reserva> productoss = new ArrayList<Reserva>();
+
+		     
+		      reserva.findReservasByUser(id).forEach(productoss::add);
+		   
+		      System.out.println(productoss.get(0).getIdUsuario());
+		      if (productoss.isEmpty()) {
+		        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		      }
+
+		      return new ResponseEntity<>(productoss, HttpStatus.OK);
+		    } catch (Exception e) {
+		      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		    }
+	}
+
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.komeya.jpa.interfaceService.IReservaService;
+import com.komeya.jpa.modelo.Producto;
 import com.komeya.jpa.modelo.Reserva;
 
 @CrossOrigin(origins = "*")
@@ -44,5 +45,13 @@ public class ReservaController {
 	public ResponseEntity<Reserva> crearReserva(@RequestBody Reserva p) {
 		
 		return reservaService.createReserva(p);
+	}
+
+	@GetMapping("/reservasDeUsuario/{id}")
+	public ResponseEntity<List<Reserva>> getProductosXReserva( @PathVariable("id") Long id){
+		
+		ResponseEntity<List<Reserva>> productos=reservaService.getReservasByUsuario(id);
+		return productos;
+		
 	}
 }

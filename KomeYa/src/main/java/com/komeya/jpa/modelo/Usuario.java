@@ -13,14 +13,10 @@ import javax.persistence.Table;
 public class Usuario  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PK_Id", unique = true, nullable = false)
 	private Long id;
-	
 	private String nombre;
 	private String apellidos;
-	@Column(name = "email", unique = true, nullable = false)
 	private String email;
-	@Column(name = "nombreUsuariof", unique = true, nullable = false)
 	private String nombreUsuario;
 	private String contrasenia ;
 	private String rolUsuario ;
