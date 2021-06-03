@@ -25,18 +25,17 @@ public class ProductoXReservaController {
 	private IProductoXReservaService productoXReservaService;
 	
 	
-	@GetMapping("/productosXReserva")
-	public ResponseEntity<List<ProductoXReserva>> getProductosXReserva(){
-		ResponseEntity<List<ProductoXReserva>> productos=productoXReservaService.getProductosXReserva();
+	@GetMapping("/productosXReserva/{id}")
+	public ResponseEntity<List<ProductoXReserva>> getProductosXReserva(@PathVariable("id") Long id){
+		ResponseEntity<List<ProductoXReserva>> productos=productoXReservaService.getProductosXReserva(id);
 		return productos;
 		
 	}
 	@GetMapping("/productosDeReserva/{id}")
-	public ResponseEntity<List<Producto>> getProductosXReserva( @PathVariable("id") Long id){
+	public ResponseEntity<List<Producto>> getProductosDeReserva( @PathVariable("id") Long id){
 		
 		ResponseEntity<List<Producto>> productos=productoXReservaService.getProductosDeReserva(id);
 		return productos;
-		
 	}
 	@PostMapping("/addProductoToReserva")
 	public ResponseEntity<ProductoXReserva> addProductoToReserva(@RequestBody ProductoXReserva pr){

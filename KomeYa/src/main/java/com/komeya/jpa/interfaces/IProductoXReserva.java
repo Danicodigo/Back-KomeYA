@@ -12,9 +12,8 @@ import com.komeya.jpa.modelo.ProductoXReserva;
 @Repository
 public interface IProductoXReserva extends CrudRepository<ProductoXReserva, Long>{
 
-	
-	@Query(value = "SELECT * FROM komeya.`producto_x_reserva` where fk_id_reserva like :id", nativeQuery = true)
-	public List<ProductoXReserva> findProductsByReserva(Long id);
+
+	public List<ProductoXReserva> findByIdReserva(Long id);
 	
 	
 }

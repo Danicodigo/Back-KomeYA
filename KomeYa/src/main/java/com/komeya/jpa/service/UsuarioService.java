@@ -58,7 +58,7 @@ public class UsuarioService implements IUsuarioService{
 	      _usuario.setNombre(u.getNombre());
 	      _usuario.setApellidos(u.getApellidos());
 	      _usuario.setCiudad(u.getCiudad());
-	      _usuario.setContrasenia(u.getContrasenia());
+	      _usuario.setContrasenia(BCrypt.hashpw(u.getContrasenia(), BCrypt.gensalt()));
 	      _usuario.setEmail(u.getEmail());
 	      _usuario.setNombreUsuario(u.getNombreUsuario());
 	      _usuario.setRolUsuario(u.getRolUsuario());

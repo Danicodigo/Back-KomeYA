@@ -24,24 +24,7 @@ public class ProductoXReservaService implements IProductoXReservaService{
 	@Autowired
 	IProductoService productos;
 	
-	@Override
-	public ResponseEntity<List<ProductoXReserva>> getProductosXReserva() {
-		try {
-		      List<ProductoXReserva> productoxreservaa = new ArrayList<ProductoXReserva>();
-
-		     
-		      productoxreserva.findAll().forEach(productoxreservaa::add);
-		   
-
-		      if (productoxreservaa.isEmpty()) {
-		        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		      }
-
-		      return new ResponseEntity<>(productoxreservaa, HttpStatus.OK);
-		    } catch (Exception e) {
-		      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		    }
-	}
+	
 
 
 
@@ -67,19 +50,36 @@ public class ProductoXReservaService implements IProductoXReservaService{
 	}
 
 
+	@Override
+	public ResponseEntity<List<ProductoXReserva>> getProductosXReserva(Long id) {
+		try {
+		      List<ProductoXReserva> productoxreservaa = new ArrayList<ProductoXReserva>();
 
+		     
+		      productoxreserva.findByIdReserva(id).forEach(productoxreservaa::add);
+		   
+
+		      if (productoxreservaa.isEmpty()) {
+		        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		      }
+
+		      return new ResponseEntity<>(productoxreservaa, HttpStatus.OK);
+		    } catch (Exception e) {
+		      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		    }
+	}
 	@Override
 	public ResponseEntity<List<Producto>> getProductosDeReserva(Long id) {
 		try {
 		      List<ProductoXReserva> productoxreservaa = new ArrayList<ProductoXReserva>();
 		      List<Producto>productos= new ArrayList<Producto>();
 		      
-		      productoxreserva.findProductsByReserva(id).forEach(productoxreservaa::add);
+		      productoxreserva.findByIdReserva(id).forEach(productoxreservaa::add);
 		      
 		      
 		      for(ProductoXReserva oxp : productoxreservaa) {
-					ResponseEntity<Producto> pw = this.productos.getProducto(oxp.getId());
-					productos.add(pw.getBody());
+					ResponseEntity<Producto> pw = this.productos.getProducto(oxp.getIdProducto());
+					
 					
 				}
 		      if (productoxreservaa.isEmpty()) {
