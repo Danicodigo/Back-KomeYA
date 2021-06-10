@@ -14,6 +14,8 @@ import com.komeya.jpa.interfaces.IProducto;
 import com.komeya.jpa.interfaces.IReserva;
 import com.komeya.jpa.modelo.Producto;
 import com.komeya.jpa.modelo.Reserva;
+import com.komeya.jpa.modelo.Usuario;
+import com.komeya.jpa.utils.BCrypt;
 @Service
 public class ReservaService implements IReservaService{
 
@@ -89,6 +91,21 @@ public class ReservaService implements IReservaService{
 		      return new ResponseEntity<>(productoss, HttpStatus.OK);
 		    } catch (Exception e) {
 		      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		    }
+	}
+
+
+
+	@Override
+	public ResponseEntity<Reserva> updateReserva(Long id, Reserva res) {
+		  Optional<Reserva> tutorialData = reserva.findById(id);
+
+		    if (tutorialData.isPresent()) {
+		      Reserva r = tutorialData.get();
+		      r.setEstado(res.getEstado());
+		      return new ResponseEntity<>(reserva.save(r), HttpStatus.OK);
+		    } else {
+		      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		    }
 	}
 

@@ -15,4 +15,5 @@ public interface IReservaService {
 	public ResponseEntity<Reserva> createReserva(Reserva r);
 	ResponseEntity<Reserva> deleteReserva(Long id);
 	ResponseEntity<List<Reserva>> getReservasByUsuario(Long id);
+	ResponseEntity<Reserva> updateReserva(Long id, Reserva res);
 }

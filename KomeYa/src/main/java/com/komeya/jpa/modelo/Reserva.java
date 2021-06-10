@@ -22,11 +22,10 @@ public class Reserva {
 	private String tipoReserva;
 	private Integer numPersonas;
 	private String sugerencias;
-	
 	private Long idUsuario;
-
+	private String estado;
 	public Reserva(Long id, Date fecha, Time hora, String tipoReserva, Integer numPersonas, String sugerencias,
-			Long idUsuario) {
+			Long idUsuario, String estado) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
@@ -35,67 +34,59 @@ public class Reserva {
 		this.numPersonas = numPersonas;
 		this.sugerencias = sugerencias;
 		this.idUsuario = idUsuario;
+		this.estado = estado;
 	}
-
 	public Reserva() {
 		super();
 	}
-
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public Date getFecha() {
 		return fecha;
 	}
-
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
 	public Time getHora() {
 		return hora;
 	}
-
 	public void setHora(Time hora) {
 		this.hora = hora;
 	}
-
 	public String getTipoReserva() {
 		return tipoReserva;
 	}
-
 	public void setTipoReserva(String tipoReserva) {
 		this.tipoReserva = tipoReserva;
 	}
-
 	public Integer getNumPersonas() {
 		return numPersonas;
 	}
-
 	public void setNumPersonas(Integer numPersonas) {
 		this.numPersonas = numPersonas;
 	}
-
 	public String getSugerencias() {
 		return sugerencias;
 	}
-
 	public void setSugerencias(String sugerencias) {
 		this.sugerencias = sugerencias;
 	}
-
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
-
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	
-	
+
 	}
