@@ -1,19 +1,35 @@
 package com.komeya.jpa.interfaces;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
 import org.springframework.stereotype.Repository;
 
-import com.komeya.jpa.modelo.ProductoXReserva;
-import com.komeya.jpa.modelo.Usuario;
+import com.komeya.jpa.security.entity.Usuario;
+
+
+/**
+ * Esta clase sirve de repositorio de las relaciones de los usuarios
+ * 
+ * @author Dani Kuradchyk
+ */
 @Repository
 public interface IUsuario extends CrudRepository<Usuario, Long> {
-	@Query(value = "SELECT * FROM komeya.`usuario` where email like :email and contrasenia like :pass", nativeQuery = true)
-	public Optional<Usuario> findByEmailAndContrasenia(String email, String pass);
 	
 
+	/**
+	 * Devuelve un usuario por su email
+	 *
+	 * @param email del usuario
+	 * @return el usuario solicitado
+	 */
 	Usuario findByEmail(String email);
+
+	
+	/**
+	 * Devuelve un usuario por su email
+	 *
+	 * @param username del usuario
+	 * @return el usuario solicitado
+	 */
+	Usuario findByNombreUsuario(String username);
 }

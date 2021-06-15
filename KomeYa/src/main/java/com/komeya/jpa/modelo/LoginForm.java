@@ -1,6 +1,7 @@
 package com.komeya.jpa.modelo;
 
 public class LoginForm {
+	
 	private String email;
 	private String pass;
 	public LoginForm(String email, String pass) {
